@@ -8,9 +8,9 @@ const api = axios.create({
 });
 
 export const tvApi = {
-  nowPlaying: () => api.get("movie/no"),
   topRated: () => api.get("tv/top_rated"),
   airingToday: () => api.get("tv/airing_today"),
+  popular: () =>api.get("tv/popular"),
   showDetail: (id) =>
     api.get(`tv/${id}`, {
       params: {
@@ -18,7 +18,7 @@ export const tvApi = {
       },
     }),
   search: (term) =>
-    api.get(`search/movie`, {
+    api.get(`search/tv`, {
       params: {
         query: encodeURIComponent(term),
       },
