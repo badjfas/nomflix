@@ -25,7 +25,7 @@ export const tvApi = {
     }),
 };
 
-export const moivesApi = {
+export const moviesApi = {
   nowPlaying: () => api.get("movie/now_playing"),
   upcoming: () => api.get("movie/upcoming"),
   popular: () => api.get("movie/popular"),
