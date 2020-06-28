@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
 import ErrorMessage from "../../Components/ErrorMessage";
+import Poster from "../../Components/Poster";
 
 const Container = styled.div`
   padding: 0px 10px;
@@ -43,15 +44,34 @@ const SearchPresenter = ({
       <>
         {movieResults && movieResults.length > 0 && (
           <Section title="Movie Result">
-            {movieResults.map((movie) => (
-              <span key={movie.id}>{movie.name}</span>
-            ))}
+            {movieResults.map((movie) => {
+              console.log(movie)
+              return(
+                <Poster
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.original_title}
+                  imageUrl={movie.poster_path}
+                  isMovie={true}
+                  rating={movie.vote_average}
+                  year={movie.release_date && movie.release_date.substring(0, 4)}
+                />
+              )
+            })}
           </Section>
         )}
         {tvResults && tvResults.length > 0 && (
           <Section title="TV Show Result">
             {tvResults.map((tv) => (
-              <span key={tv.id}>{tv.name}</span>
+              <Poster
+                key={tv.id}
+                id={tv.id}
+                title={tv.original_name}
+                imageUrl={tv.poster_path}
+                isMovie={false}
+                rating={tv.vote_average}
+                year={tv.first_air_date && tv.first_air_date.substring(0, 4)}
+              />
             ))}
           </Section>
         )}
@@ -60,7 +80,10 @@ const SearchPresenter = ({
           movieResults &&
           tvResults.length === 0 &&
           movieResults.length === 0 && (
-            <ErrorMessage color="#95a5a6" text={`Nothing Found for : ${searchTerm}`} />
+            <ErrorMessage
+              color="#95a5a6"
+              text={`Nothing Found for : ${searchTerm}`}
+            />
           )}
       </>
     )}

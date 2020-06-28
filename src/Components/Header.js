@@ -31,7 +31,7 @@ const Item = styled.li`
 const SLink = styled(Link)`
   height: 50px;
   display: flex;
-  align-items: center;
+ align-items: center;
   justify-content: center;
 `;
 
