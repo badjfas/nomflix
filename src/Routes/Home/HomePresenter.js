@@ -5,9 +5,10 @@ import Section from "./../../Components/Section";
 import Loader from "../../Components/Loader";
 import ErrorMessage from "../../Components/ErrorMessage";
 import Poster from "../../Components/Poster";
-
+import Helmet from "react-helmet";
 const Container = styled.div`
-  padding: 0px 10px;
+  padding: 20px;
+
 `;
 
 const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) => {
@@ -15,6 +16,9 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) => {
     <Loader />
   ) : (
     <Container>
+      <Helmet>
+        <title>Movies | Nomflix</title>
+      </Helmet>
       {nowPlaying && nowPlaying.length > 0 && (
         <Section title="Now Playing">
           {nowPlaying.map((movie) => (
@@ -48,7 +52,15 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) => {
       {popular && popular.length > 0 && (
         <Section title="Popular Movies">
           {popular.map((popular) => (
-            <Poster />
+                        <Poster
+                        key={popular.id}
+                        title={popular.original_title}
+                        imageUrl={popular.poster_path}
+                        id={popular.id}
+                        isMovie={true}
+                        rating={popular.vote_average}
+                        year={popular.release_date && popular.release_date.substring(0,4)}
+                      />
           ))}
         </Section>
       )}

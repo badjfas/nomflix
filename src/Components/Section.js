@@ -21,8 +21,6 @@ const Grid = styled.div`
 `;
 
 const Section = ({ title, children }) => {
-  console.log(title, children);
-
   return (
     <Container>
       <Title>{title}</Title>

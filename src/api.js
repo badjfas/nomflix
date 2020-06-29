@@ -30,7 +30,7 @@ export const moviesApi = {
   upcoming: () => api.get("movie/upcoming"),
   popular: () => api.get("movie/popular"),
   movieDetail: (id) =>
-    api.get(`moive/${id}`, {
+    api.get(`movie/${id}`, {
       params: {
         append_to_response: "videos",
       },

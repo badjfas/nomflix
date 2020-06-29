@@ -5,9 +5,10 @@ import Section from "../../Components/Section";
 import Loader from "../../Components/Loader";
 import ErrorMessage from "../../Components/ErrorMessage";
 import Poster from "../../Components/Poster";
+import Helmet from "react-helmet";
 
 const Container = styled.div`
-  padding: 0px 10px;
+  padding: 20px;
 `;
 
 const TVPresenter = ({ topRated, popular, airingToday, loading, error }) =>
@@ -15,6 +16,9 @@ const TVPresenter = ({ topRated, popular, airingToday, loading, error }) =>
     <Loader />
   ) : (
     <Container>
+            <Helmet>
+        <title>TV | Nomflix</title>
+      </Helmet>
       {topRated && topRated.length > 0 && (
         <Section title="Top Rated Shows">
           {topRated.map((show) => {
